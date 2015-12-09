@@ -29,6 +29,7 @@ func q(x: [String: Any]) -> [String: Any] {
     return x
 }
 
+
 class Bson {
     private let handle: UnsafePointer<bson_t>
     
@@ -44,7 +45,46 @@ class Bson {
         
         return String(CString: b, encoding: NSUTF8StringEncoding)
     }
+    
+    func get<T>(key: String) -> T? {
+        let iter = UnsafeMutablePointer<bson_iter_t>.alloc(1)
+        let desc = UnsafeMutablePointer<bson_iter_t>.alloc(1)
+        
+        defer {
+            bson_free(iter)
+            bson_free(desc)
+        }
+        
+        bson_iter_init(iter, handle)
+        if bson_iter_find_descendant(iter, utf8(key), desc) {
+            let type = bson_iter_type(desc)
+            
+            var res: Any
+            
+            switch type {
+            case BSON_TYPE_BOOL:
+                res = bson_iter_bool(desc)
+            case BSON_TYPE_DATE_TIME:
+                res = NSDate(timeIntervalSince1970: Double(bson_iter_date_time(desc)))
+            case BSON_TYPE_INT32:
+                res = bson_iter_int32(desc)
+            case BSON_TYPE_INT64:
+                res = bson_iter_int64(desc)
+            case BSON_TYPE_UTF8:
+                res = bson_iter_utf8(desc, nil)
+            default:
+                return nil
+            }
+            
+            if let out = res as? T {
+                return out
+            }
+        }
+        
+        return nil
+    }
 }
+
 
 class MutableBson : Bson {
     private let mutHandle: UnsafeMutablePointer<bson_t>
@@ -251,6 +291,10 @@ print(true.dynamicType.dynamicType)
 let client = MongoClient("mongodb://localhost:27017")
 let coll = client.getCollection(db: "test", collection: "test")
 let yey = try coll.find(q(["test": true]), fields: nil)
+
+let test = try MutableBson(q(["test": true, "test2": Int64(42)])) as Bson
+
+print(test.get("test2")!)
 
 print("IT BEGINS")
 
