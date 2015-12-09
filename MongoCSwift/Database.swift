@@ -18,26 +18,22 @@
 
 import Foundation
 
-mongoc_init()
-
-let client = MongoClient("mongodb://localhost:27017")
-let coll = client.getCollection(db: "test", collection: "test")
-let yey = try coll.find(q(["test": true]), fields: nil)
-
-let test = try MutableBson(["test": true, "test2": Int64(42)]) as Bson
-
-print(test.get("test")!)
-
-print("IT BEGINS")
-
-for c in yey {
-    if let r = c.toJsonString() {
-        print(r)
+class Database {
+    internal let handle: COpaquePointer
+    
+    init(handle: COpaquePointer) {
+        self.handle = handle
     }
-}
-
-try coll.find(q(["test": true]), fields: nil) { c in
-    if let r = c.toJsonString() {
-        print(r)
+    
+    deinit {
+        mongoc_database_destroy(handle)
+    }
+    
+    func getCollection(collection: String) -> Collection {
+        return Collection(handle: mongoc_database_get_collection(handle, utf8(collection)))
+    }
+    
+    subscript(collection: String) -> Collection {
+        return getCollection(collection)
     }
 }

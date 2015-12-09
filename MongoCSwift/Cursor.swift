@@ -18,26 +18,34 @@
 
 import Foundation
 
-mongoc_init()
-
-let client = MongoClient("mongodb://localhost:27017")
-let coll = client.getCollection(db: "test", collection: "test")
-let yey = try coll.find(q(["test": true]), fields: nil)
-
-let test = try MutableBson(["test": true, "test2": Int64(42)]) as Bson
-
-print(test.get("test")!)
-
-print("IT BEGINS")
-
-for c in yey {
-    if let r = c.toJsonString() {
-        print(r)
+class Cursor : SequenceType, GeneratorType {
+    internal let handle: COpaquePointer
+    
+    init(handle: COpaquePointer) {
+        self.handle = handle
     }
-}
-
-try coll.find(q(["test": true]), fields: nil) { c in
-    if let r = c.toJsonString() {
-        print(r)
+    
+    deinit {
+        mongoc_cursor_destroy(handle)
+    }
+    
+    func generate() -> Cursor.Generator {
+        return self
+    }
+    
+    func next() -> Bson? {
+        var b = UnsafeMutablePointer<UnsafePointer<bson_t>>.alloc(1)
+        
+        defer {
+            b.destroy()
+        }
+        
+        let res = mongoc_cursor_next(handle, b)
+        
+        if res == false {
+            return nil
+        }
+        
+        return Bson(handle: UnsafeMutablePointer<bson_t>(b.memory))
     }
 }

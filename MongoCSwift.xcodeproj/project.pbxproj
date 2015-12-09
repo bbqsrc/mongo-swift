@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		C61E17A61C17D12700567628 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61E17A51C17D12700567628 /* main.swift */; };
+		C61E17C31C184FA200567628 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61E17C21C184FA200567628 /* Database.swift */; };
+		C61E17C51C184FB300567628 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61E17C41C184FB300567628 /* Collection.swift */; };
+		C61E17C71C184FBD00567628 /* MongoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61E17C61C184FBD00567628 /* MongoClient.swift */; };
+		C61E17C91C184FE400567628 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61E17C81C184FE400567628 /* Utils.swift */; };
+		C61E17CB1C18500800567628 /* Bson.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61E17CA1C18500800567628 /* Bson.swift */; };
+		C61E17CD1C18502200567628 /* Cursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61E17CC1C18502200567628 /* Cursor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,6 +32,12 @@
 		C61E17A21C17D12700567628 /* MongoCSwift */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MongoCSwift; sourceTree = BUILT_PRODUCTS_DIR; };
 		C61E17A51C17D12700567628 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		C61E17AC1C17D14100567628 /* MongoCSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MongoCSwift-Bridging-Header.h"; sourceTree = "<group>"; };
+		C61E17C21C184FA200567628 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		C61E17C41C184FB300567628 /* Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
+		C61E17C61C184FBD00567628 /* MongoClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MongoClient.swift; sourceTree = "<group>"; };
+		C61E17C81C184FE400567628 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		C61E17CA1C18500800567628 /* Bson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bson.swift; sourceTree = "<group>"; };
+		C61E17CC1C18502200567628 /* Cursor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cursor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +71,12 @@
 			isa = PBXGroup;
 			children = (
 				C61E17A51C17D12700567628 /* main.swift */,
+				C61E17CC1C18502200567628 /* Cursor.swift */,
+				C61E17CA1C18500800567628 /* Bson.swift */,
+				C61E17C81C184FE400567628 /* Utils.swift */,
+				C61E17C21C184FA200567628 /* Database.swift */,
+				C61E17C41C184FB300567628 /* Collection.swift */,
+				C61E17C61C184FBD00567628 /* MongoClient.swift */,
 				C61E17AC1C17D14100567628 /* MongoCSwift-Bridging-Header.h */,
 			);
 			path = MongoCSwift;
@@ -122,7 +140,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C61E17C91C184FE400567628 /* Utils.swift in Sources */,
+				C61E17C51C184FB300567628 /* Collection.swift in Sources */,
+				C61E17CD1C18502200567628 /* Cursor.swift in Sources */,
+				C61E17C31C184FA200567628 /* Database.swift in Sources */,
+				C61E17CB1C18500800567628 /* Bson.swift in Sources */,
 				C61E17A61C17D12700567628 /* main.swift in Sources */,
+				C61E17C71C184FBD00567628 /* MongoClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
