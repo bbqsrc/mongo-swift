@@ -29,6 +29,16 @@ func q(x: [String: Any]) -> [String: Any] {
     return x
 }
 
+func q(x: DictionaryLiteral<String, Any>) -> [String: Any] {
+    var out = [String: Any]()
+    
+    for (k, v) in x {
+        out[k] = v
+    }
+    
+    return out
+}
+
 
 class Bson {
     private let handle: UnsafePointer<bson_t>
@@ -198,6 +208,10 @@ class MutableBson : Bson {
             }
         }
     }
+    
+    convenience init(_ val: DictionaryLiteral<String, Any>) throws {
+        try self.init(q(val))
+    }
 }
 
 
@@ -292,9 +306,9 @@ let client = MongoClient("mongodb://localhost:27017")
 let coll = client.getCollection(db: "test", collection: "test")
 let yey = try coll.find(q(["test": true]), fields: nil)
 
-let test = try MutableBson(q(["test": true, "test2": Int64(42)])) as Bson
+let test = try MutableBson(["test": true, "test2": Int64(42)]) as Bson
 
-print(test.get("test2")!)
+print(test.get("test")!)
 
 print("IT BEGINS")
 
