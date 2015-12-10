@@ -40,12 +40,10 @@ class Cursor : SequenceType, GeneratorType {
             b.destroy()
         }
         
-        let res = mongoc_cursor_next(handle, b)
-        
-        if res == false {
-            return nil
+        if mongoc_cursor_next(handle, b) {
+            return Bson(handle: b.memory)
         }
         
-        return Bson(handle: UnsafeMutablePointer<bson_t>(b.memory))
+        return nil
     }
 }
