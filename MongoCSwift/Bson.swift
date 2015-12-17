@@ -105,7 +105,6 @@ public class MutableBson : Bson {
     }
     
     deinit {
-        print("Killing: \(self.toJsonString()!)")
         bson_destroy(mutHandle)
     }
     
