@@ -18,7 +18,7 @@
 
 import Foundation
 
-class Database {
+public class Database {
     internal let handle: COpaquePointer
     
     init(handle: COpaquePointer) {

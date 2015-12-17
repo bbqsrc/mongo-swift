@@ -18,7 +18,7 @@
 
 import Foundation
 
-class MongoClient {
+public class MongoClient {
     internal let handle: COpaquePointer
     
     init(_ uri: String) {

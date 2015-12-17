@@ -18,11 +18,25 @@
 
 import Foundation
 
-enum BsonError: ErrorType {
+public enum BsonError: ErrorType {
     case UnsupportedType(key: String, type: Any.Type)
 }
 
-class Bson {
+public func bson(val: [String: Any]?) throws -> Bson {
+    return try MutableBson(val) as Bson
+}
+
+public func bson(val: DictionaryLiteral<String, Any>) throws -> Bson {
+    return try MutableBson(val) as Bson
+}
+
+internal let emptyBson = Bson(handle: bson_new())
+
+public class Bson {
+    class var empty: Bson {
+        return emptyBson
+    }
+    
     internal let handle: UnsafePointer<bson_t>
     
     internal init(handle: UnsafePointer<bson_t>) {
@@ -78,12 +92,12 @@ class Bson {
 }
 
 
-class MutableBson : Bson {
+public class MutableBson : Bson {
     internal let mutHandle: UnsafeMutablePointer<bson_t>
     
     internal init(handle: UnsafeMutablePointer<bson_t>) {
         self.mutHandle = handle
-        super.init(handle: UnsafePointer<bson_t>.init(handle))
+        super.init(handle: UnsafePointer<bson_t>(handle))
     }
     
     convenience internal init() {
@@ -91,6 +105,7 @@ class MutableBson : Bson {
     }
     
     deinit {
+        print("Killing: \(self.toJsonString()!)")
         bson_destroy(mutHandle)
     }
     
