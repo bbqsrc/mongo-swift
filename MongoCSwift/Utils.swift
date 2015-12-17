@@ -27,11 +27,20 @@ internal func q(x: [String: Any]) -> [String: Any] {
     return x
 }
 
-internal func q(x: DictionaryLiteral<String, Any>) -> [String: Any] {
+internal func q(x: DictionaryLiteral<String, Any>?) -> [String: Any] {
     var out = [String: Any]()
     
-    for (k, v) in x {
-        out[k] = v
+    if x == nil {
+        return [:]
+    }
+    
+    for (k, v) in x! {
+        if let vv = v as? DictionaryLiteral<String, Any> {
+            out[k] = q(vv)
+        } else {
+            out[k] = v
+        }
+        
     }
     
     return out

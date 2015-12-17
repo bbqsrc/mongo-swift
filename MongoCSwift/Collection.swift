@@ -29,17 +29,27 @@ class Collection {
         mongoc_collection_destroy(handle)
     }
     
-    func find(query: [String: Any]?, fields: [String: Any]?) throws -> Cursor {
+    func find(query: [String: Any]?, fields: [String: Any]?=nil) throws -> Cursor {
         let bsonQuery = try MutableBson(query) as Bson
         let bsonFields = try MutableBson(fields) as Bson
         
         return Cursor(handle: mongoc_collection_find(handle, MONGOC_QUERY_NONE, 0, 0, 0, bsonQuery.handle, bsonFields.handle, nil))
     }
     
-    func find(query: [String: Any]?, fields: [String: Any]?, @noescape closure: (bson: Bson) -> Void) throws {
+    
+    func find(query: [String: Any]?, fields: [String: Any]?=nil, @noescape closure: (bson: Bson) -> Void) throws {
         let cur = try find(query, fields: fields)
         for c in cur {
             closure(bson: c)
         }
+    }
+    
+    // Convenience overloads
+    func find(query: DictionaryLiteral<String, Any>, fields: DictionaryLiteral<String, Any>?=nil) throws -> Cursor {
+        return try find(q(query), fields: q(fields))
+    }
+    
+    func find(query: DictionaryLiteral<String, Any>, fields: DictionaryLiteral<String, Any>?=nil, @noescape closure: (bson: Bson) -> Void) throws {
+        return try find(q(query), fields: q(fields), closure: closure)
     }
 }
