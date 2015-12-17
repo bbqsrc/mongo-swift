@@ -41,3 +41,5 @@ try coll.find(q(["test": true]), fields: nil) { c in
         print(r)
     }
 }
+
+print(try coll.count(["test": true], skip: 1))
