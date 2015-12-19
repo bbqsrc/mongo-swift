@@ -21,7 +21,7 @@ import Foundation
 public class MongoClient {
     internal let handle: COpaquePointer
     
-    init(_ uri: String) {
+    public init(_ uri: String) {
         self.handle = mongoc_client_new(utf8(uri))
     }
     
@@ -29,11 +29,11 @@ public class MongoClient {
         mongoc_client_destroy(handle)
     }
     
-    func getDatabase(db: String) -> Database {
+    public func getDatabase(db: String) -> Database {
         return Database(handle: mongoc_client_get_database(handle, utf8(db)))
     }
     
-    func getCollection(db db: String, collection: String) -> Collection {
+    public func getCollection(db db: String, collection: String) -> Collection {
         return Collection(handle: mongoc_client_get_collection(handle, utf8(db), utf8(collection)))
     }
     

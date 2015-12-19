@@ -19,6 +19,7 @@
 import Foundation
 
 public enum MongoError: ErrorType {
+    case UnknownError(code: UInt32, domain: UInt32, message: String)
     case InsertError(message: String)
     case UpdateError(message: String)
     case RemoveError(message: String)
@@ -27,6 +28,10 @@ public enum MongoError: ErrorType {
 
 public class Collection {
     internal let handle: COpaquePointer
+    
+    public var name: String {
+        return NSString(UTF8String: mongoc_collection_get_name(self.handle)) as! String
+    }
     
     init(handle: COpaquePointer) {
         self.handle = handle
@@ -45,6 +50,30 @@ public class Collection {
         for c in cur {
             closure(bson: c)
         }
+    }
+    
+    func insert(documents: [Bson], flags: mongoc_insert_flags_t=MONGOC_INSERT_NONE) throws -> Result {
+        let bulk = mongoc_collection_create_bulk_operation(handle, true, nil)
+        let error = UnsafeMutablePointer<bson_error_t>.alloc(1)
+        let reply = UnsafeMutablePointer<bson_t>.alloc(1)
+        
+        defer {
+            mongoc_bulk_operation_destroy(bulk)
+            bson_destroy(reply)
+            reply.destroy()
+            error.destroy()
+        }
+        
+        for doc in documents {
+            mongoc_bulk_operation_insert(bulk, doc.handle)
+        }
+        
+        let res = mongoc_bulk_operation_execute(bulk, reply, error)
+        if res == 0 {
+            throw MongoError.InsertError(message: errorString(error.memory))
+        }
+        
+        return Result(handle: reply)
     }
     
     func insert(document: Bson, flags: mongoc_insert_flags_t=MONGOC_INSERT_NONE/*, writeConcern: Int32=MONGOC_WRITE_CONCERN_W_DEFAULT*/) throws {

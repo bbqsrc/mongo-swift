@@ -53,3 +53,23 @@ internal func q(x: DictionaryLiteral<String, Any>?) -> [String: Any] {
     
     return out
 }
+
+internal func mongoCall(@noescape call: (err: UnsafeMutablePointer<bson_error_t>) throws -> Bool) throws {
+    let error = UnsafeMutablePointer<bson_error_t>.alloc(1)
+    defer {
+        error.destroy()
+    }
+    
+    if try !call(err: error) {
+        let msg = errorString(error.memory)
+
+        switch (mongoc_error_code_t(error.memory.code)) {
+        case MONGOC_ERROR_COLLECTION_INSERT_FAILED:
+            throw MongoError.InsertError(message: msg)
+        case MONGOC_ERROR_COLLECTION_UPDATE_FAILED:
+            throw MongoError.UpdateError(message: msg)
+        default:
+            throw MongoError.UnknownError(code: error.memory.code, domain: error.memory.domain, message: msg)
+        }
+    }
+}

@@ -21,6 +21,10 @@ import Foundation
 public class Database {
     internal let handle: COpaquePointer
     
+    public var name: String {
+        return NSString(UTF8String: mongoc_database_get_name(self.handle)) as! String
+    }
+    
     init(handle: COpaquePointer) {
         self.handle = handle
     }
@@ -32,6 +36,22 @@ public class Database {
     func getCollection(collection: String) -> Collection {
         return Collection(handle: mongoc_database_get_collection(handle, utf8(collection)))
     }
+    
+    func dropCollection(collection: Collection) throws {
+        try mongoCall { err in
+            return mongoc_collection_drop(collection.handle, err)
+        }
+    }
+    
+    /*
+    func dropCollection(name: String) throws {
+        try mongoCall { err in
+            return mongoc_database_has_collection(self.handle, utf8(name), err) {
+                try self.dropCollection(self.getCollection(name))
+            }
+        }
+    }
+    */
     
     subscript(collection: String) -> Collection {
         return getCollection(collection)

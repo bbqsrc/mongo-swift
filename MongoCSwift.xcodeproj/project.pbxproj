@@ -14,6 +14,16 @@
 		C61E17C91C184FE400567628 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61E17C81C184FE400567628 /* Utils.swift */; };
 		C61E17CB1C18500800567628 /* Bson.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61E17CA1C18500800567628 /* Bson.swift */; };
 		C61E17CD1C18502200567628 /* Cursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61E17CC1C18502200567628 /* Cursor.swift */; };
+		C650AA511C23CEB000BC4479 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = C650AA501C23CEB000BC4479 /* Result.swift */; };
+		C650AA591C25409700BC4479 /* MongoCSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C650AA581C25409700BC4479 /* MongoCSwiftTests.swift */; };
+		C650AA5E1C2542BF00BC4479 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61E17A51C17D12700567628 /* main.swift */; };
+		C650AA5F1C2542BF00BC4479 /* Cursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61E17CC1C18502200567628 /* Cursor.swift */; };
+		C650AA601C2542BF00BC4479 /* Bson.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61E17CA1C18500800567628 /* Bson.swift */; };
+		C650AA611C2542BF00BC4479 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61E17C81C184FE400567628 /* Utils.swift */; };
+		C650AA621C2542BF00BC4479 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61E17C21C184FA200567628 /* Database.swift */; };
+		C650AA631C2542BF00BC4479 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61E17C41C184FB300567628 /* Collection.swift */; };
+		C650AA641C2542BF00BC4479 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = C650AA501C23CEB000BC4479 /* Result.swift */; };
+		C650AA651C2542BF00BC4479 /* MongoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61E17C61C184FBD00567628 /* MongoClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,10 +48,21 @@
 		C61E17C81C184FE400567628 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		C61E17CA1C18500800567628 /* Bson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bson.swift; sourceTree = "<group>"; };
 		C61E17CC1C18502200567628 /* Cursor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cursor.swift; sourceTree = "<group>"; };
+		C650AA501C23CEB000BC4479 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		C650AA561C25409700BC4479 /* MongoCSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MongoCSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C650AA581C25409700BC4479 /* MongoCSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MongoCSwiftTests.swift; sourceTree = "<group>"; };
+		C650AA5A1C25409700BC4479 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		C61E179F1C17D12700567628 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C650AA531C25409700BC4479 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -55,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				C61E17A41C17D12700567628 /* MongoCSwift */,
+				C650AA571C25409700BC4479 /* MongoCSwiftTests */,
 				C61E17A31C17D12700567628 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -63,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				C61E17A21C17D12700567628 /* MongoCSwift */,
+				C650AA561C25409700BC4479 /* MongoCSwiftTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -76,10 +99,20 @@
 				C61E17C81C184FE400567628 /* Utils.swift */,
 				C61E17C21C184FA200567628 /* Database.swift */,
 				C61E17C41C184FB300567628 /* Collection.swift */,
+				C650AA501C23CEB000BC4479 /* Result.swift */,
 				C61E17C61C184FBD00567628 /* MongoClient.swift */,
 				C61E17AC1C17D14100567628 /* MongoCSwift-Bridging-Header.h */,
 			);
 			path = MongoCSwift;
+			sourceTree = "<group>";
+		};
+		C650AA571C25409700BC4479 /* MongoCSwiftTests */ = {
+			isa = PBXGroup;
+			children = (
+				C650AA581C25409700BC4479 /* MongoCSwiftTests.swift */,
+				C650AA5A1C25409700BC4479 /* Info.plist */,
+			);
+			path = MongoCSwiftTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -102,19 +135,39 @@
 			productReference = C61E17A21C17D12700567628 /* MongoCSwift */;
 			productType = "com.apple.product-type.tool";
 		};
+		C650AA551C25409700BC4479 /* MongoCSwiftTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C650AA5B1C25409700BC4479 /* Build configuration list for PBXNativeTarget "MongoCSwiftTests" */;
+			buildPhases = (
+				C650AA521C25409700BC4479 /* Sources */,
+				C650AA531C25409700BC4479 /* Frameworks */,
+				C650AA541C25409700BC4479 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MongoCSwiftTests;
+			productName = MongoCSwiftTests;
+			productReference = C650AA561C25409700BC4479 /* MongoCSwiftTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		C61E179A1C17D12700567628 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0710;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Brendan Molloy";
 				TargetAttributes = {
 					C61E17A11C17D12700567628 = {
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = AE56HWMN8U;
+					};
+					C650AA551C25409700BC4479 = {
+						CreatedOnToolsVersion = 7.2;
 					};
 				};
 			};
@@ -131,9 +184,20 @@
 			projectRoot = "";
 			targets = (
 				C61E17A11C17D12700567628 /* MongoCSwift */,
+				C650AA551C25409700BC4479 /* MongoCSwiftTests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C650AA541C25409700BC4479 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C61E179E1C17D12700567628 /* Sources */ = {
@@ -146,7 +210,24 @@
 				C61E17C31C184FA200567628 /* Database.swift in Sources */,
 				C61E17CB1C18500800567628 /* Bson.swift in Sources */,
 				C61E17A61C17D12700567628 /* main.swift in Sources */,
+				C650AA511C23CEB000BC4479 /* Result.swift in Sources */,
 				C61E17C71C184FBD00567628 /* MongoClient.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C650AA521C25409700BC4479 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C650AA621C2542BF00BC4479 /* Database.swift in Sources */,
+				C650AA611C2542BF00BC4479 /* Utils.swift in Sources */,
+				C650AA651C2542BF00BC4479 /* MongoClient.swift in Sources */,
+				C650AA5E1C2542BF00BC4479 /* main.swift in Sources */,
+				C650AA591C25409700BC4479 /* MongoCSwiftTests.swift in Sources */,
+				C650AA5F1C2542BF00BC4479 /* Cursor.swift in Sources */,
+				C650AA631C2542BF00BC4479 /* Collection.swift in Sources */,
+				C650AA641C2542BF00BC4479 /* Result.swift in Sources */,
+				C650AA601C2542BF00BC4479 /* Bson.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +360,32 @@
 			};
 			name = Release;
 		};
+		C650AA5C1C25409700BC4479 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = MongoCSwiftTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = so.brendan.MongoCSwiftTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MongoCSwift/MongoCSwift-Bridging-Header.h";
+			};
+			name = Debug;
+		};
+		C650AA5D1C25409700BC4479 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = MongoCSwiftTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = so.brendan.MongoCSwiftTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MongoCSwift/MongoCSwift-Bridging-Header.h";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -296,6 +403,15 @@
 			buildConfigurations = (
 				C61E17AA1C17D12700567628 /* Debug */,
 				C61E17AB1C17D12700567628 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C650AA5B1C25409700BC4479 /* Build configuration list for PBXNativeTarget "MongoCSwiftTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C650AA5C1C25409700BC4479 /* Debug */,
+				C650AA5D1C25409700BC4479 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
