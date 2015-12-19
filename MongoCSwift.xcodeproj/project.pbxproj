@@ -24,6 +24,7 @@
 		C650AA631C2542BF00BC4479 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61E17C41C184FB300567628 /* Collection.swift */; };
 		C650AA641C2542BF00BC4479 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = C650AA501C23CEB000BC4479 /* Result.swift */; };
 		C650AA651C2542BF00BC4479 /* MongoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61E17C61C184FBD00567628 /* MongoClient.swift */; };
+		C650AA671C25712D00BC4479 /* MongoCSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C650AA581C25409700BC4479 /* MongoCSwiftTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -122,8 +123,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C61E17A91C17D12700567628 /* Build configuration list for PBXNativeTarget "MongoCSwift" */;
 			buildPhases = (
-				C61E179E1C17D12700567628 /* Sources */,
 				C61E179F1C17D12700567628 /* Frameworks */,
+				C61E179E1C17D12700567628 /* Sources */,
 				C61E17A01C17D12700567628 /* CopyFiles */,
 			);
 			buildRules = (
@@ -209,6 +210,7 @@
 				C61E17CD1C18502200567628 /* Cursor.swift in Sources */,
 				C61E17C31C184FA200567628 /* Database.swift in Sources */,
 				C61E17CB1C18500800567628 /* Bson.swift in Sources */,
+				C650AA671C25712D00BC4479 /* MongoCSwiftTests.swift in Sources */,
 				C61E17A61C17D12700567628 /* main.swift in Sources */,
 				C650AA511C23CEB000BC4479 /* Result.swift in Sources */,
 				C61E17C71C184FBD00567628 /* MongoClient.swift in Sources */,
@@ -414,6 +416,7 @@
 				C650AA5D1C25409700BC4479 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

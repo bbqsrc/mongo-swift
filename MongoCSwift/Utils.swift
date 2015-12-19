@@ -22,11 +22,6 @@ internal func utf8(key: String) -> UnsafePointer<Int8> {
     return (key as NSString).UTF8String
 }
 
-// Needed to stop booleans being coerced to integers, and NSObjects appearing out of nowhere
-internal func q(x: [String: Any]) -> [String: Any] {
-    return x
-}
-
 internal func errorString(err: bson_error_t) -> String {
     var s = ""
     for var i = 0; i < 504; ++i {
@@ -35,6 +30,7 @@ internal func errorString(err: bson_error_t) -> String {
     return s
 }
 
+// Needed to stop booleans being coerced to integers, and NSObjects appearing out of nowhere
 internal func q(x: DictionaryLiteral<String, Any>?) -> [String: Any] {
     var out = [String: Any]()
     

@@ -33,7 +33,7 @@ public class Collection {
         return NSString(UTF8String: mongoc_collection_get_name(self.handle)) as! String
     }
     
-    init(handle: COpaquePointer) {
+    internal init(handle: COpaquePointer) {
         self.handle = handle
     }
     
@@ -50,6 +50,11 @@ public class Collection {
         for c in cur {
             closure(bson: c)
         }
+    }
+    
+    func findOne(query: Bson, fields: Bson=Bson.empty) -> Bson? {
+        let cur = find(query, fields: fields)
+        return cur.next()
     }
     
     func insert(documents: [Bson], flags: mongoc_insert_flags_t=MONGOC_INSERT_NONE) throws -> Result {

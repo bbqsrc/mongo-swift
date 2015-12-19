@@ -25,7 +25,7 @@ public class Database {
         return NSString(UTF8String: mongoc_database_get_name(self.handle)) as! String
     }
     
-    init(handle: COpaquePointer) {
+    internal init(handle: COpaquePointer) {
         self.handle = handle
     }
     

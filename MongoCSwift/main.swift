@@ -17,29 +17,3 @@
 //
 
 import Foundation
-
-mongoc_init()
-
-let client = MongoClient("mongodb://localhost:27017")
-let coll = client.getCollection(db: "test", collection: "test")
-let yey = coll.find(try bson(["test": true]))
-
-let test = try MutableBson(["test": true, "test2": Int64(42)]) as Bson
-
-print(test.get("test")!)
-
-print("IT BEGINS")
-
-for c in yey {
-    if let r = c.toJsonString() {
-        print(r)
-    }
-}
-
-coll.find(try bson(["test": true])) { c in
-    if let r = c.toJsonString() {
-        print(r)
-    }
-}
-
-print(try coll.count(try bson(["test": true]), skip: 1))
