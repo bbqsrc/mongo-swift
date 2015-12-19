@@ -41,7 +41,7 @@ class Cursor : SequenceType, GeneratorType {
         }
         
         if mongoc_cursor_next(handle, b) {
-            return Bson(handle: b.memory)
+            return Bson.clone(b.memory)
         }
         
         return nil

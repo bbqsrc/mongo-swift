@@ -33,6 +33,10 @@ public class Bson {
         return emptyBson
     }
     
+    internal class func clone(handle: UnsafePointer<bson_t>) -> Bson {
+        return MutableBson(handle: bson_copy(handle))
+    }
+    
     internal let handle: UnsafePointer<bson_t>
     
     internal init(handle: UnsafePointer<bson_t>) {
@@ -45,7 +49,7 @@ public class Bson {
             bson_free(b)
         }
         
-        return String(CString: b, encoding: NSUTF8StringEncoding)
+        return String(UTF8String: b)
     }
     
     func get<T>(key: String) -> T? {
