@@ -273,10 +273,10 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"/opt/mongo-c/include/libmongoc-1.0",
-					"/opt/mongo-c/include/libbson-1.0",
+					"/usr/local/include/libmongoc-1.0",
+					"/usr/local/include/libbson-1.0",
 				);
-				LIBRARY_SEARCH_PATHS = "/opt/mongo-c/lib";
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -321,10 +321,10 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"/opt/mongo-c/include/libmongoc-1.0",
-					"/opt/mongo-c/include/libbson-1.0",
+					"/usr/local/include/libmongoc-1.0",
+					"/usr/local/include/libbson-1.0",
 				);
-				LIBRARY_SEARCH_PATHS = "/opt/mongo-c/lib";
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = (

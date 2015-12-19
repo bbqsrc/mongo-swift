@@ -220,7 +220,6 @@ public class MutableBson : Bson {
         self.init()
         
         for (k, v) in val {
-            print(k)
             try MutableBson.append(self, key: k, value: v)
         }
     }
