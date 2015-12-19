@@ -102,6 +102,7 @@ public class MutableBson : Bson {
     
     deinit {
         bson_destroy(mutHandle)
+        mutHandle.destroy()
     }
     
     internal class func append(instance: MutableBson, key k: String, value v: Any) throws {
