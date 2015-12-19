@@ -1,0 +1,8 @@
+language: objective-c
+xcode_project: MongoCSwift.xcodeproj
+xcode_scheme: MongoCSwiftTests
+
+before_install:
+  - brew update
+  - brew install mongo-c
+
